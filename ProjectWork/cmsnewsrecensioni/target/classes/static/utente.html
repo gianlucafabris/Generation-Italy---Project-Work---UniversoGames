@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniversoGames</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="main.css" rel="stylesheet">
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="utente.js"></script>
+    <script src="gestionenotizie.js"></script>
+    <script src="gestionerecensioni.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img class="logoSito" src="images/logo.jpg" alt="Logo UniversoGames" title="Logo UniversoGames">
+        <h1>UniversoGames</h1>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="recensioni.html">Recensioni</a>
+        <a href="utente.html">Profilo</a>
+        <div class="animation start-profilo"></div>
+      </nav>
+    </header>
+    <main class="container">
+      <!-- login singin -->
+      <div class="loginsingin">
+        <div class="flex-container">
+          <!-- login -->
+          <div class="card text-center">
+            <div class="card-header">
+              <div class="card-title">
+                <h3>Accedi</h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <input type="text" name="usernameLogin" placeholder='Username'>
+              <br><br>
+              <input type="password" name="passwordLogin" placeholder='Password'>
+              <br><br>
+              <button class="loginsinginButton" id="loginButton">Accedi</button>
+            </div>
+          </div>
+          <!-- signin  -->
+          <div class="card text-center">
+            <div class="card-header">
+              <div class="card-title">
+                <h3>Registrati</h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <input type="text" name="nomeSignin" placeholder='Nome'>
+              <br><br>
+              <input type="text" name="cognomeSignin" placeholder='Cognome'>
+              <br><br>
+              <input type="text" name="usernameSignin" placeholder='Username'>
+              <br><br>
+              <input type="password" name="passwordSignin" placeholder='Password'>
+              <br><br>
+              <button class="loginsinginButton" id="signinButton">Registrati</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- gestione -->
+      <div class="gestione">
+        <!-- notizie -->
+        <div class="notizie">
+          <h1>Gestione notizie</h1>
+          <input type="hidden" name="idnotizia" value="" id="idnotizia">
+          <input type="text" name="titolo" placeholder="titolo"><br>
+          <input type="text" name="categoria" placeholder="categoria"><br>
+          <textarea name="contenuto" rows="5" cols="100" placeholder="contenuto"></textarea><br>
+          <label for="datanotizia">data pubblicazione</label> <input type="date" name="datanotizia" id="datanotizia"><br>
+          <label for="immaginecopertina">immagine copertina</label> <input type="file" name="immaginecopertina" id="immaginecopertina"> <img src="images/[IMG]" alt=""><br>
+          <!-- <label for="immaginecarosello1" data-indeximg="1">immagine carosello 1</label> <input type="file" name="immaginecarosello1" id="immaginecarosello1" data-indeximg="1"> <button id="eliminaimmagine1" data-indeximg="1">&times;</button><br> -->
+          <button id="aggiungiimmagine" type="button">+</button><br>
+          <button id="aggiunginotizia">Aggiungi</button>
+          <div class="table-wrapper">
+            <table class="fl-table">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>titolo</th>
+                  <th>categoria</th>
+                  <th>contenuto</th>
+                  <th>data pubblicazione</th>
+                  <th>immagini</th>
+                  <th>opzioni</th>
+                </tr>
+              </thead>
+              <tbody id="outputnotizie">
+                <!-- <tr>
+                  <td>1</td>
+                  <td>Notizia 1</td>
+                  <td>categoria</td>
+                  <td>contenuto</td>
+                  <td>data</td>
+                  <td>
+                    <img src="images/Call of Duty Vanguard 1 - Copertina.jpg" alt="">
+                    <br><br>
+                    <img src="images/League of Legends 10.jpg" alt=""><br>
+                    <img src="images/League of Legends 9.jpg" alt=""><br>
+                    <img src="images/League of Legends 8.jpg" alt=""><br>
+                    <img src="images/League of Legends 7.jpg" alt="">
+                  </td>
+                  <td>
+                    <button class="modificanotizia">modifica</button><br>
+                    <button class="eliminanotizia">elimina</button>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- recensioni -->
+        <div class="recensioni">
+          <h1>Gestione recensioni</h1>
+          <input type="hidden" name="idrecensione" value="" id="idrecensione">
+          <input type="text" name="titolovideogioco" placeholder="titolo videogioco"><br>
+          <label for="datarecensione">data pubblicazione</label><input type="date" name="datarecensione" id="datarecensione"><br>
+          <textarea name="recensione" rows="5" cols="100" placeholder="recensione"></textarea><br>
+          <label for="punteggio">punteggio</label>
+          <select name="punteggio" id="punteggio">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+          </select><br>
+          <button id="aggiungirecensione">Aggiungi</button>
+          <div class="table-wrapper">
+            <table class="fl-table">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>titolo videogioco</th>
+                  <th>data pubblicazione</th>
+                  <th>recensione</th>
+                  <th>punteggio</th>
+                  <th>opzioni</th>
+                </tr>
+              </thead>
+              <tbody id="outputrecensioni">
+              	<!-- <tr>
+                  <td>1</td>
+                  <td>videogioco</td>
+                  <td>data</td>
+                  <td>recensione</td>
+                  <td>voto</td>
+                  <td>
+                    <button class="modificarecensione">modifica</button><br>
+                    <button class="eliminarecensione">elimina</button>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
