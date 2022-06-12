@@ -42,6 +42,29 @@ jQuery(function($) {
       for (const r of response) {
         $('#output').append(Object.cast(r, Recensione).render());
       }
+			$('.recensione').collapser({
+				mode: 'words',
+				truncate: 50,
+				ellipsis: '...',
+				controlBtn: '',
+
+				showText: 'Mostra di più',
+				hideText: 'Nacondi testo',
+				showClass: 'show-class',
+				hideClass: 'hide-class',
+
+				atStart: 'hide',
+				blockTarget: 'next',
+				blockEffect: 'fade',
+
+				lockHide: false,
+				changeText: false,
+
+				beforeShow: null,
+				afterShow: null,
+				beforeHide: null,
+				afterHide: null
+			});
     });
 	}
   function renderOutput(){

@@ -54,6 +54,52 @@ jQuery(function($) {
   			for (const r of response) {
   				$('#outputrecensioni').append(Object.cast(r, Recensione).render());
   			}
+				$('.recensioni tr td:nth-child(2)').collapser({
+			    mode: 'lines',
+			    truncate: 5,
+			    ellipsis: '...',
+			    controlBtn: '',
+
+			    showText: 'Mostra di più',
+			    hideText: 'Nacondi testo',
+			    showClass: 'show-class',
+			    hideClass: 'hide-class',
+
+			    atStart: 'hide',
+			    blockTarget: 'next',
+			    blockEffect: 'fade',
+
+			    lockHide: false,
+			    changeText: false,
+
+			    beforeShow: null,
+			    afterShow: null,
+			    beforeHide: null,
+			    afterHide: null
+				});
+				$('.recensioni tr td:nth-child(4)').collapser({
+			    mode: 'lines',
+			    truncate: 5,
+			    ellipsis: '...',
+			    controlBtn: '',
+
+			    showText: 'Mostra di più',
+			    hideText: 'Nacondi testo',
+			    showClass: 'show-class',
+			    hideClass: 'hide-class',
+
+			    atStart: 'hide',
+			    blockTarget: 'next',
+			    blockEffect: 'fade',
+
+			    lockHide: false,
+			    changeText: false,
+
+			    beforeShow: null,
+			    afterShow: null,
+			    beforeHide: null,
+			    afterHide: null
+				});
   		});
   	} else {
   		$.get(`recensioni/${index}`, function(response) {
