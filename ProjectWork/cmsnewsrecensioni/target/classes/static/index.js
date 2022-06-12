@@ -63,7 +63,7 @@ jQuery(function($) {
 				let notizia =`<a href="#" id="back">Torna indietro</a>
         <h1>${n.titolo}</h1>
         <img src="images/${n.copertina.nome}" alt="">
-        <p>${n.contenuto}</p>`;
+        <p id="contenutonotizia">${n.contenuto}</p>`;
 				notizia += `<section class="carousel" aria-label="Gallery">
           <ol class="carousel__viewport">`;
 				for (let i = 0; i < n.carosello.length; i++) {
@@ -96,6 +96,29 @@ jQuery(function($) {
 				notizia += `<p class="alignright"><span>${n.categoria}</span> - <span>${n.data}</span> - <span>${n.autore.nome} ${n.autore.cognome}</span></p>`;
         $('#containeroutput').hide();
         $('#notizia').html(notizia).show();
+				$('#contenutonotizia').collapser({
+			    mode: 'lines',
+			    truncate: 5,
+			    ellipsis: '...',
+			    controlBtn: '',
+
+			    showText: 'Mostra di più',
+			    hideText: 'Nacondi testo',
+			    showClass: 'show-class',
+			    hideClass: 'hide-class',
+
+			    atStart: 'hide',
+			    blockTarget: 'next',
+			    blockEffect: 'fade',
+
+			    lockHide: false,
+			    changeText: false,
+
+			    beforeShow: null,
+			    afterShow: null,
+			    beforeHide: null,
+			    afterHide: null
+				});
 			});
 		}
 	}

@@ -114,6 +114,75 @@ jQuery(function($) {
 				for (const n of response) {
 					$('#outputnotizie').append(Object.cast(n, Notizia).render());
 				}
+				$('.notizie tr td:nth-child(2)').collapser({
+			    mode: 'lines',
+			    truncate: 5,
+			    ellipsis: '...',
+			    controlBtn: '',
+
+			    showText: 'Mostra di più',
+			    hideText: 'Nacondi testo',
+			    showClass: 'show-class',
+			    hideClass: 'hide-class',
+
+			    atStart: 'hide',
+			    blockTarget: 'next',
+			    blockEffect: 'fade',
+
+			    lockHide: false,
+			    changeText: false,
+
+			    beforeShow: null,
+			    afterShow: null,
+			    beforeHide: null,
+			    afterHide: null
+				});
+				$('.notizie tr td:nth-child(3)').collapser({
+			    mode: 'lines',
+			    truncate: 5,
+			    ellipsis: '...',
+			    controlBtn: '',
+
+			    showText: 'Mostra di più',
+			    hideText: 'Nacondi testo',
+			    showClass: 'show-class',
+			    hideClass: 'hide-class',
+
+			    atStart: 'hide',
+			    blockTarget: 'next',
+			    blockEffect: 'fade',
+
+			    lockHide: false,
+			    changeText: false,
+
+			    beforeShow: null,
+			    afterShow: null,
+			    beforeHide: null,
+			    afterHide: null
+				});
+				$('.notizie tr td:nth-child(4)').collapser({
+			    mode: 'lines',
+			    truncate: 5,
+			    ellipsis: '...',
+			    controlBtn: '',
+
+			    showText: 'Mostra di più',
+			    hideText: 'Nacondi testo',
+			    showClass: 'show-class',
+			    hideClass: 'hide-class',
+
+			    atStart: 'hide',
+			    blockTarget: 'next',
+			    blockEffect: 'fade',
+
+			    lockHide: false,
+			    changeText: false,
+
+			    beforeShow: null,
+			    afterShow: null,
+			    beforeHide: null,
+			    afterHide: null
+				});
 			});
 		} else {
 			$.get(`notizie/${index}`, function(response) {
