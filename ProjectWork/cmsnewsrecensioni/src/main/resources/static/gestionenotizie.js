@@ -50,7 +50,7 @@ jQuery(function($) {
     if (isNaN(i)) {
       i = 1;
     }
-    $('#aggiungiimmagine').before(`<label for="immaginecarosello${i}" data-indeximg="${i}">immagine carosello ${i}</label> <input type="file" name="immaginecarosello${i}" id="immaginecarosello${i}" data-indeximg="${i}"> <button id="eliminaimmagine${i}" data-indeximg="${i}">&times;</button><br>`);
+    $('#aggiungiimmagine').before(`<label for="immaginecarosello${i}" data-indeximg="${i}">immagine carosello ${i}</label> <input type="file" name="immaginecarosello${i}" id="immaginecarosello${i}" data-indeximg="${i}"> <img src="images/[IMG]" alt="" data-indeximg="${i}"> <button id="eliminaimmagine${i}" data-indeximg="${i}">&times;</button><br>`);
   }
   function eliminaImmagine(index) {
     $(`[data-indeximg="${index}"]+br`).each(function(){$(this).remove()});
@@ -59,12 +59,14 @@ jQuery(function($) {
   }
   function riordina(){
     $('[data-indeximg]').each(function(index){
-      if (index % 3 == 0) {
-        $(this).attr('for', `immaginecarosello${Math.floor(index / 3) + 1}`).attr('data-indeximg', Math.floor(index / 3) + 1).text(`immagine carosello ${Math.floor(index / 3) + 1}`);
-      } else if (index % 3 == 1) {
-        $(this).attr('name', `immaginecarosello${Math.floor(index / 3) + 1}`).attr('id', `immaginecarosello${Math.floor(index / 3) + 1}`).attr('data-indeximg', Math.floor(index / 3) + 1);
+      if (index % 4 == 0) {
+        $(this).attr('for', `immaginecarosello${Math.floor(index / 4) + 1}`).attr('data-indeximg', Math.floor(index / 4) + 1).text(`immagine carosello ${Math.floor(index / 4) + 1}`);
+      } else if (index % 4 == 1) {
+        $(this).attr('name', `immaginecarosello${Math.floor(index / 4) + 1}`).attr('id', `immaginecarosello${Math.floor(index / 4) + 1}`).attr('data-indeximg', Math.floor(index / 4) + 1);
+      } else if (index % 4 == 2) {
+        $(this).attr('data-indeximg', Math.floor(index / 4) + 1);
       } else {
-        $(this).attr('id', `eliminaimmagine${Math.floor(index / 3) + 1}`).attr('data-indeximg', Math.floor(index / 3) + 1);
+        $(this).attr('id', `eliminaimmagine${Math.floor(index / 4) + 1}`).attr('data-indeximg', Math.floor(index / 4) + 1);
       }
     });
   }
@@ -75,11 +77,23 @@ jQuery(function($) {
   $('.notizie').on('click', '[id^=eliminaimmagine]', function(){
     eliminaImmagine($(this).attr('data-indeximg'));
   });
+	copertina.on('change', function(e){
+		// let src = 'images/[IMG]';
+		let src = URL.createObjectURL(e.target.files[0]);
+		$(this).next().attr('src', src);
+	});
+  $('.notizie').on('change', '[name^=immaginecarosello]', function(e){
+		// let src = 'images/[IMG]';
+		let src = URL.createObjectURL(e.target.files[0]);
+		$(this).next().attr('src', src);
+  });
   /*gestione notizia*/
   $('#aggiunginotizia').on('click', function() {
     let n = new Notizia(id.val(), titolo.val(), categoria.val(), contenuto.val(), data.val(), utenteSessione);
     if (copertina.val() != '') {
       n.copertina = new Immagine(-1, copertina.val().split('\\')[copertina.val().split('\\').length - 1], 'copertina');
+    } else if (copertina.next().attr('src').split('images/').length == 2) {
+    	n.copertina = new Immagine(-1, copertina.next().attr('src').split('images/')[1], 'copertina');
     }
     let index = 0;
     n.carosello = [];
@@ -87,7 +101,10 @@ jQuery(function($) {
       if ($(this).val() != '') {
         n.carosello[index] = new Immagine(-1, $(this).val().split('\\')[$(this).val().split('\\').length - 1], 'carosello');
         index++;
-      }
+      } else if ($(this).next().attr('src').split('images/').length == 2) {
+        n.carosello[index] = new Immagine(-1, $(this).next().attr('src').split('images/')[1], 'carosello');
+        index++;
+	    }
     });
     if ($(this).text() == 'Aggiungi') {
       doPost(n);
@@ -193,13 +210,15 @@ jQuery(function($) {
 				contenuto.val(n.contenuto);
 				data.val(n.data);
         //copertina.val(n.copertina.nome);
+				copertina.next().attr('src', `images/${n.copertina.nome}`)
         $('[id^=eliminaimmagine]').each(function(){
           $(this).click();
         });
         let index = 1;
         for (var immagine of n.carosello) {
           $('#aggiungiimmagine').click();
-          //$('#aggiungiimmagine').prev().prev().prev().val(n.carosello.nome);
+          //$('#aggiungiimmagine').prev().prev().prev().prev().val(immagine.nome);
+          $('#aggiungiimmagine').prev().prev().prev().attr('src', `images/${immagine.nome}`);
           index++;
         }
 				$('#aggiunginotizia').text('Modifica');
