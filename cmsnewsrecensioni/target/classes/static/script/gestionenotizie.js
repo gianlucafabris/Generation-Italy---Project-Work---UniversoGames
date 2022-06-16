@@ -55,6 +55,9 @@ jQuery(function($) {
   function eliminaImmagine(index) {
     $(`[data-indeximg="${index}"]+br`).each(function(){$(this).remove()});
     $(`[data-indeximg="${index}"]`).each(function(){$(this).remove()});
+		if ($('[data-indeximg]').length == 0) {
+			nuovaImmagine(1);
+		}
     riordina();
   }
   function riordina(){
@@ -69,9 +72,6 @@ jQuery(function($) {
         $(this).attr('id', `eliminaimmagine${Math.floor(index / 4) + 1}`).attr('data-indeximg', Math.floor(index / 4) + 1);
       }
     });
-		if ($('[data-indeximg]').length == 0) {
-			nuovaImmagine(1);
-		}
   }
   nuovaImmagine(1);
   $('#aggiungiimmagine').on('click', function(){
