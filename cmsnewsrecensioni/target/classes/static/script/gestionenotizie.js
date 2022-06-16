@@ -224,6 +224,7 @@ jQuery(function($) {
           $('#aggiungiimmagine').prev().prev().prev().attr('src', `images/${immagine.nome}`);
           index++;
         }
+				$('[id=eliminaimmagine1]').click();
 				$('#aggiunginotizia').text('Modifica');
 			});
 		}
