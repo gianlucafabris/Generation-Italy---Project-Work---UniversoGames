@@ -1,0 +1,5 @@
+package com.universogames.cmsnewsrecensioni.entities;
+
+public class Immagine {
+
+}

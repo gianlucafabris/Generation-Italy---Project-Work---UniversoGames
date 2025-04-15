@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.dao.IdaoNotizie"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.dao.IDaoRecensioni"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.entities.Recensione"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.dao.IDaoNotizie"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.entities.Notizia"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.entities.Utente"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.dao.IDaoUtenti"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.entities.Immagine"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.dao.IDaoImmagini"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.universogames.cmsnewsrecensioni.service.FileStorageService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
+    <fullyQualifiedTypeName name="com.fang.springsecuritydemo.auth.Utente"/>
+</qualifiedTypeNameHistroy>

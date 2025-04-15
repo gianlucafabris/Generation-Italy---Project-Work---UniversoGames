@@ -1,0 +1,179 @@
+package com.universogames.cmsnewsrecensioni.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Value;
+
+import com.universogames.cmsnewsrecensioni.entities.Immagine;
+
+public class DaoImmagini implements IDaoImmagini {
+
+	private String dbAddress;
+	private String username;
+	private String password;
+
+	public DaoImmagini(@Value("${db.address}") String dbAddress, @Value("${db.user}") String username, @Value("${db.psw}") String password) {
+		this.dbAddress = dbAddress;
+		this.username = username;
+		this.password = password;
+	}
+
+	@Override
+	public ArrayList<Immagine> immaginiRecensione(int id) {
+		ArrayList<Immagine> ris = new ArrayList<Immagine>();
+		
+		try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+			PreparedStatement stm = conn.prepareStatement("select * from immagini where idrecensione = ?");
+
+			stm.setInt(1, id);
+			
+			ResultSet rs = stm.executeQuery();
+			
+			while (rs.next()) {
+				ris.add(new Immagine(rs.getInt("id"), rs.getString("nomeimmagine")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ris;
+	}
+
+	@Override
+	public Immagine immagineNotizia(int id) {	
+		Immagine ris = null;
+		
+		try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+			PreparedStatement stm = conn.prepareStatement("select * from notizie where idnotizia = ?");
+			
+			stm.setInt(1, id);
+			
+			ResultSet rs = stm.executeQuery();
+			
+			if (rs.next()) {
+				ris = new Immagine(rs.getInt("id"), rs.getString("nomeimmagine"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ris;
+	}
+	
+	@Override
+	public Immagine immagine(int id) {	
+		Immagine ris = null;
+		
+		try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+			PreparedStatement stm = conn.prepareStatement("select * from notizie where id = ?");
+			
+			stm.setInt(1, id);
+			
+			ResultSet rs = stm.executeQuery();
+			
+			if (rs.next()) {
+				ris = new Immagine(rs.getInt("id"), rs.getString("nomeimmagine"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ris;
+	}
+
+	@Override
+	public boolean aggiungi(Immagine immagine) {
+		if (immagine != null) {
+			try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+				PreparedStatement stm = conn.prepareStatement("insert into immagini (nomeimmagine, idnotizia, idrecensione) values (?, ?, ?)");
+				
+				stm.setString(1, immagine.getTitolo());
+				//TODO idnotizia/idrecensione
+				
+				return stm.executeUpdate() > 0;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return false;
+/*
+		try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+
+			PreparedStatement ps = conn.prepareStatement(
+					"INSERT INTO immagini (NOMEIMMAGINE, IDNOTIZIA, IDRECENSIONE) values (?,?,?)"); 
+			ps.setString(1,foto.getNome());
+			ps.setInt(2, foto.getIdNotizia());
+			ps.setInt(3, foto.getIdRecensione());
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}*/
+	}
+
+	@Override
+	public boolean elimina(int id) {
+		Immagine i = immagine(id);
+		
+		if (i != null) {
+			Utente utente = notizia(id).getAutore();
+			try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+				PreparedStatement stm = conn.prepareStatement("delete from notizie where id = ?");
+				
+				stm.setInt(1, id);
+				
+				return stm.executeUpdate() > 0;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return false;
+
+		try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+
+			PreparedStatement ps = conn.prepareStatement(
+					"DELETE FROM immagini WHERE id = ?"); 
+			ps.setInt(1,id);
+
+			int conferma = ps.executeUpdate();
+			return (conferma > 0);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean modifica(Immagine immagine) {
+
+		try (Connection conn = DriverManager.getConnection(dbAddress, username, password)) {
+			PreparedStatement ps = conn.prepareStatement(
+					"UPDATE immagini SET nomeimmagine = ?, idnotizia = ?, idrecensione = ? WHERE id = ?");
+			
+			ps.setString(1,foto.getNome());
+			ps.setInt(2, foto.getIdNotizia());
+			ps.setInt(3, foto.getIdRecensione());
+			ps.setInt(4, id);
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+}

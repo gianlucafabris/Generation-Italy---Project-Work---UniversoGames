@@ -1,0 +1,19 @@
+package com.universogames.cmsnewsrecensioni.dao;
+
+import java.util.ArrayList;
+
+import com.universogames.cmsnewsrecensioni.entities.Immagine;
+
+public interface IDaoImmagini {
+	
+	ArrayList<Immagine> immagini(int id);
+	
+	Immagine immagine(int id);
+	
+	boolean aggiungi(Immagine foto);
+	
+	boolean elimina(int id);
+	
+	boolean modifica(Immagine foto);
+	
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniversoGames</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/jquery-3.6.0.min.js"></script>
+    <script src="script/jquery.collapser.min.js"></script>
+    <script src="script/gestione.js"></script>
+    <script src="script/gestionenotizie.js"></script>
+    <script src="script/gestionerecensioni.js"></script>
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="style/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img class="logoSito" src="images/logo.jpg" alt="Logo UniversoGames" title="Logo UniversoGames">
+        <h1>UniversoGames</h1>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="recensioni.html">Recensioni</a>
+        <a href="gestione.html">Profilo</a>
+        <div class="animation start-profilo"></div>
+      </nav>
+    </header>
+    <main class="container gestione">
+      <!-- gestione -->
+      <div class="notizie bg-light">
+        <!-- form notizie -->
+        <a href="/logout">Esci dal profilo</a>
+        <div class="container carda-0 justify-content-center ">
+  				<div class="carda-body px-sm-4 px-0">
+  					<div class="row justify-content-center mb-5">
+  						<div class="col-md-10 col">
+  							<h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">Gestione Notizie</h3>
+  							<p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left">Inserisci tutti i dati della tua notizia</p>
+  						</div>
+  					</div>
+  					<div class="row justify-content-center round">
+  						<div class="col-lg-10 col-md-12 ">
+  							<div class="carda carda-1">
+  								<div class="carda-body inner-carda">
+  									<div class="row justify-content-center">
+  										<div class="col-lg-5 col-md-6 col-sm-12">
+  											<input type="hidden" name="idnotizia" value="" id="idnotizia">
+  											<div class="form-group">
+                          <label for="titolo">Titolo notizia</label> <input type="text" name="titolo" placeholder="titolo" id="titolo" class="form-control">
+  											</div>
+  											<div class="form-group">
+  												<label for="categoria">Categoria</label> <input type="text" name="categoria" placeholder="categoria" id="categoria" class="form-control">
+  											</div>
+  										</div>
+  										<div class="col-lg-5 col-md-6 col-sm-12">
+  											<div class="form-group">
+                          <label for="datanotizia">Data pubblicazione</label> <input type="date" name="datanotizia" id="datanotizia" class="form-control">
+  											</div>
+  										</div>
+  									</div>
+  									<div class="row justify-content-center">
+  										<div class="col-md-12 col-lg-10 col-12">
+  											<div class="form-group files">
+  												<label for="immaginecopertina">Immagine copertina</label><br><input type="file" name="immaginecopertina" id="immaginecopertina" class="form-control"><img src="images/[IMG]" alt=""><button id="eliminacopertina" class="btn btn-primary btn-block">&times;</button>
+  											</div>
+  											<div class="form-group files">
+                          <!-- <label for="immaginecarosello1" data-indeximg="1">Immagine carosello 1</label><br><input type="file" name="immaginecarosello1" id="immaginecarosello1" class="form-control" data-indeximg="1"><img src="images/[IMG]" alt="" data-indeximg="1"><button id="eliminaimmagine1" class="btn btn-primary btn-block" data-indeximg="1">&times;</button><br> -->
+                          <button id="aggiungiimmagine" class="btn btn-primary btn-block" type="button">+</button><br>
+  											</div>
+  										</div>
+  									</div>
+  									<div class="row justify-content-center">
+  										<div class="col-md-12 col-lg-10 col-12">
+  											<div class="form-group">
+  												<label for="contenuto">Contenuto Notizia</label> <textarea name="contenuto" rows="5" cols="100" placeholder="contenuto" id="contenuto" class="form-control"></textarea>
+  											</div>
+  											<div class="mb-2 mt-4">
+  												<div class="text-right">
+                            <button id="aggiunginotizia" class="btn btn-primary btn-block">Aggiungi</button>
+  												</div>
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+        <!-- tabella notizie -->
+        <div class="table-wrapper">
+          <table class="fl-table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>titolo</th>
+                <th>categoria</th>
+                <th>contenuto</th>
+                <th>data pubblicazione</th>
+                <th>immagini</th>
+                <th>opzioni</th>
+              </tr>
+            </thead>
+            <tbody id="outputnotizie">
+              <!-- <tr>
+                <td>1</td>
+                <td>Notizia 1</td>
+                <td>categoria</td>
+                <td>contenuto</td>
+                <td>data</td>
+                <td>
+                  <img src="images/Call of Duty Vanguard 1 - Copertina.jpg" alt="">
+                  <br><br>
+                  <img src="images/League of Legends 10.jpg" alt=""><br>
+                  <img src="images/League of Legends 9.jpg" alt=""><br>
+                  <img src="images/League of Legends 8.jpg" alt=""><br>
+                  <img src="images/League of Legends 7.jpg" alt="">
+                </td>
+                <td>
+                  <button class="modificanotizia btn btn-primary btn-block">modifica</button><br>
+                  <button class="eliminanotizia btn btn-primary btn-block">elimina</button>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="recensioni bg-light">
+        <!-- from recensioni -->
+        <a href="/logout">Esci dal profilo</a>
+        <div class="container carda-0 justify-content-center ">
+  				<div class="carda-body px-sm-4 px-0">
+  					<div class="row justify-content-center mb-5">
+  						<div class="col-md-10 col">
+  							<h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">Gestione recensioni</h3>
+   							<p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left">Inserisci tutti i dati della tua recensione</p>
+  						</div>
+  					</div>
+  					<div class="row justify-content-center round">
+  						<div class="col-lg-10 col-md-12 ">
+  							<div class="carda carda-1">
+  								<div class="carda-body inner-carda">
+  									<div class="row justify-content-center">
+  										<div class="col-lg-5 col-md-6 col-sm-12">
+                        <input type="hidden" name="idrecensione" value="" id="idrecensione">
+  											<div class="form-group">
+  												<label for="titolovideogioco">Titolo videogioco</label> <input type="text" name="titolovideogioco" placeholder="titolo videogioco" id="titolovideogioco" class="form-control">
+  											</div>
+  											<div class="form-group">
+                          <label for="punteggio">Punteggio</label>
+                          <select name="punteggio" id="punteggio" class="form-control">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                          </select>
+  											</div>
+  										</div>
+  										<div class="col-lg-5 col-md-6 col-sm-12">
+  											<div class="form-group">
+  												<label for="datarecensione">Data publicazione</label> <input type="date" name="datarecensione" id="datarecensione" class="form-control">
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  								<div class="row justify-content-center">
+  									<div class="col-md-12 col-lg-10 col-12">
+  										<div class="form-group">
+  											<label for="recensione">Recensione</label> <textarea name="recensione" rows="5" cols="100" placeholder="recensione" id="recensione" class="form-control"></textarea>
+  										</div>
+  										<div class="mb-2 mt-4">
+  											<div class="text-right">
+                          <button id="aggiungirecensione" class="btn btn-primary btn-block">Aggiungi</button>
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+        <!-- tabella recensioni -->
+        <div class="table-wrapper">
+          <table class="fl-table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>titolo videogioco</th>
+                <th>data pubblicazione</th>
+                <th>recensione</th>
+                <th>punteggio</th>
+                <th>opzioni</th>
+              </tr>
+            </thead>
+            <tbody id="outputrecensioni">
+            	<!-- <tr>
+                <td>1</td>
+                <td>videogioco</td>
+                <td>data</td>
+                <td>recensione</td>
+                <td>voto</td>
+                <td>
+                  <button class="modificarecensione btn btn-primary btn-block">modifica</button><br>
+                  <button class="eliminarecensione btn btn-primary btn-block">elimina</button>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <footer class="text-center text-white">
+      <div class="container p-4 pb-0">
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <span class="me-3">Registrati gratuitamente</span>
+            <a href="utente.html" >
+            <button type="button" class="btn btn-outline-light btn-rounded">
+             Iscriviti
+            </button>
+            </a>
+          </p>
+        </section>
+      </div>
+      <div class="text-center p-3 copyright">
+        © 2020 Copyright:
+        <a class="text-white" href="index.html">UniversoGames.it</a>
+      </div>
+    </footer>
+  </body>
+</html>

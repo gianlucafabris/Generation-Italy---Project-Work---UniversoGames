@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniversoGames</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/jquery-3.6.0.min.js"></script>
+    <script src="script/jquery.collapser.min.js"></script>
+    <script src="script/utente.js"></script>
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="style/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img class="logoSito" src="images/logo.jpg" alt="Logo UniversoGames" title="Logo UniversoGames">
+        <h1>UniversoGames</h1>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="recensioni.html">Recensioni</a>
+        <a href="gestione.html">Profilo</a>
+        <div class="animation start-profilo"></div>
+      </nav>
+    </header>
+    <main class="container">
+      <!-- login singin -->
+      <div class="login-wrap">
+  			<div class="login-html">
+  				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Accedi</label>
+  				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrati</label>
+  				<div class="login-form">
+  					<!-- login -->
+  					<div class="sign-in-htm">
+  						<div class="group"><label for="usernameLogin" class="label">Username</label> <input id="usernameLogin" type="text" name="usernameLogin" class="input form-control"></div>
+  						<div class="group"><label for="passwordLogin" class="label">Password</label> <input id="passwordLogin" type="password" name="passwordLogin" class="input form-control" data-type="password"></div>
+  						<div class="group"><button class="button form-control" id="loginButton">Accedi</button></div>
+  						<div class="hr-login"></div>
+  						<div class="foot-lnk"><a href="#">Password dimenticata?</a><br><a href="#" id="linkRegistrati">Non hai un account? Registrati</a></div>
+  					</div>
+  					<!-- singin -->
+  					<div class="sign-up-htm">
+  						<div class="group"><label for="nomeSignin" class="label">Nome</label> <input id="nomeSignin" type="email" name="nomeSignin" class="input form-control"></div>
+  						<div class="group"><label for="cognomeSignin" class="label">Cognome</label> <input id="cognomeSignin" type="email" name="cognomeSignin" class="input form-control"></div>
+  						<div class="group"><label for="usernameSignin" class="label">Username</label> <input id="usernameSignin" type="text" name="usernameSignin" class="input form-control"></div>
+  						<div class="group"><label for="passwordSignin" class="label">Password</label> <input id="pass" type="password" name="passwordSignin" class="input form-control" data-type="password"></div>
+  						<div class="group"><button class="button form-control" id="signinButton">Registrati</button></div>
+  						<div class="hr-signin"></div>
+  						<div class="foot-lnk"><a href="utente.html">Sei già registrato? Accedi</a></div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+    </main>
+    <footer class="text-center text-white">
+      <div class="container p-4 pb-0">
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <span class="me-3">Registrati gratuitamente</span>
+            <a href="utente.html" >
+            <button type="button" class="btn btn-outline-light btn-rounded">
+             Iscriviti
+            </button>
+            </a>
+          </p>
+        </section>
+      </div>
+      <div class="text-center p-3 copyright">
+        © 2020 Copyright:
+        <a class="text-white" href="index.html">UniversoGames.it</a>
+      </div>
+    </footer>
+  </body>
+</html>
